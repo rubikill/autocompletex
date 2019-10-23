@@ -7,10 +7,9 @@ defmodule Autocompletex.Predictive.Supervisor do
 
   def init(redis) do
     children = [
-      worker(Autocompletex.Predictive, [redis, Autocompletex.Predictive] )
+      worker(Autocompletex.Predictive, [redis, Autocompletex.Predictive])
     ]
 
     supervise(children, strategy: :one_for_one)
   end
 end
-

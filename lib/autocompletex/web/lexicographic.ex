@@ -3,9 +3,9 @@ defmodule Autocompletex.Web.Lexicographic do
   require Logger
   import Plug.Conn
 
-  plug Plug.Logger
-  plug :match
-  plug :dispatch
+  plug(Plug.Logger)
+  plug(:match)
+  plug(:dispatch)
 
   get "/ok" do
     conn |> send_resp(200, ":ok") |> halt
@@ -15,8 +15,9 @@ defmodule Autocompletex.Web.Lexicographic do
     conn = conn |> fetch_query_params
     %{"term" => term} = conn.params
     Autocompletex.Lexicographic.upsert(Autocompletex.Lexicographic, [term])
+
     conn
-    |> send_resp(200, Poison.encode!(term))
+    |> send_resp(200, Jason.encode!(term))
     |> halt
   end
 
@@ -24,8 +25,9 @@ defmodule Autocompletex.Web.Lexicographic do
     conn = conn |> fetch_query_params
     %{"term" => term} = conn.params
     {:ok, result} = Autocompletex.Lexicographic.complete(Autocompletex.Lexicographic, [term])
+
     conn
-    |> send_resp(200, Poison.encode!(result))
+    |> send_resp(200, Jason.encode!(result))
     |> halt
   end
 
@@ -34,5 +36,4 @@ defmodule Autocompletex.Web.Lexicographic do
     |> send_resp(404, "Nothing here")
     |> halt
   end
-
 end

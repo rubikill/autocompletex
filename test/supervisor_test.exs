@@ -6,12 +6,14 @@ defmodule AutocompletexLexicographicSupervisorTest do
 
   setup do
     conn =
-      case Redix.start_link do
+      case Redix.start_link() do
         {:ok, conn} ->
           conn
-        {:error, {:already_started, pid}} -> 
+
+        {:error, {:already_started, pid}} ->
           pid
       end
+
     {:ok, redis: conn}
   end
 
@@ -19,6 +21,7 @@ defmodule AutocompletexLexicographicSupervisorTest do
     %{redis: conn} = state
     Autocompletex.Lexicographic.Supervisor.start_link(conn)
   end
+
   test "start_link pred", state do
     %{redis: conn} = state
     Autocompletex.Predictive.Supervisor.start_link(conn)

@@ -26,4 +26,3 @@ config :autocompletex,
   debug: false,
   # type: :lexicographic
   type: :predictive
-

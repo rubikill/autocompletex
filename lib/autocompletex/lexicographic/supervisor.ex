@@ -7,10 +7,9 @@ defmodule Autocompletex.Lexicographic.Supervisor do
 
   def init(redis) do
     children = [
-      worker(Autocompletex.Lexicographic, [redis, 'dbname', Autocompletex.Lexicographic] )
+      worker(Autocompletex.Lexicographic, [redis, 'dbname', Autocompletex.Lexicographic])
     ]
 
     supervise(children, strategy: :one_for_one)
   end
 end
-
