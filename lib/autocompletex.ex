@@ -5,10 +5,7 @@ defmodule Autocompletex do
     import Supervisor.Spec, warn: false
 
     redix =
-      worker(Redix, [
-        [host: config(:redis_host, "localhost"), port: config(:redis_port, 6379)],
-        [name: :autocomplete_redis]
-      ])
+      worker(Redix, [config(:redis_url, "redis://localhost:6379"), [name: :autocomplete_redis]])
 
     supervisor =
       case config(:type, :lexicographic) do
