@@ -1,14 +1,14 @@
 # Autocompletex
 
 [![Coverage Status](https://coveralls.io/repos/github/rickyhan/autocompletex/badge.svg?branch=master)](https://coveralls.io/github/rickyhan/autocompletex?branch=master)
-[![Build Status](https://travis-ci.org/rickyhan/autocompletex.svg?branch=master)](https://travis-ci.org/rickyhan/autocompletex)
+[![Build Status](https://travis-ci.org/rubikill/autocompletex.svg?branch=master)](https://travis-ci.org/rubikill/autocompletex)
 ![hex.pm](https://img.shields.io/hexpm/v/autocompletex.svg)
 
 Autocompletex is a low-latency plug-and-play autocomplete tool using Redis sorted set. Written in pure Elixir, it focuses on rapid prototyping using your existing stack: simply start a redis instance, and start_link a GenServer.
 
 Currently, it provides these implementation:
 
-* Google-like query prediction based on popularity. E.G. ne -> netflix, new york times 
+* Google-like query prediction based on popularity. E.G. ne -> netflix, new york times
 * Lexicographic. Sorted in alphabetical order (faster)
 
 There are two ways to run it:
