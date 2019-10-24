@@ -76,8 +76,7 @@ Add this to `config.exs`:
 
 ```elixir
 config :autocompletex,
-  redis_host: "localhost",
-  redis_port: 6379,
+  redis_url: "redis://localhost:6379",
   redis_string: nil,
   http_server: true,
   http_port: 3000,
